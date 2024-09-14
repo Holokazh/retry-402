@@ -21,7 +21,7 @@ public abstract class Form {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private long id;
+    private Long id;
 
     @Column(name = "color", nullable = false)
     private String color;
