@@ -14,7 +14,7 @@ public class Level {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, fetch = FetchType.LAZY)
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "level_id", referencedColumnName = "id", nullable = false)
     private List<Form> forms;
 

@@ -29,12 +29,13 @@ public class LevelService {
         return levelRepository.save(level);
     }
 
-    public Level updateLevel(int id, Level level) {
+    public Level updateLevel(Long id, Level level) {
         level.setId(id);
         return levelRepository.save(level);
     }
 
-    public void deleteLevel(int id) {
+    public boolean deleteLevel(int id) {
         levelRepository.deleteById(id);
+        return true;
     }
 }
