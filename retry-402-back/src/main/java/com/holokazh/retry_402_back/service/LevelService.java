@@ -1,10 +1,10 @@
 package com.holokazh.retry_402_back.service;
 
-import com.holokazh.retry_402_back.model.Form;
+import com.holokazh.retry_402_back.model.dto.LevelNameDto;
 import com.holokazh.retry_402_back.model.Level;
-import com.holokazh.retry_402_back.repository.FormRepository;
 import com.holokazh.retry_402_back.repository.LevelRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,6 +15,12 @@ public class LevelService {
 
     public LevelService(LevelRepository levelRepository) {
         this.levelRepository = levelRepository;
+    }
+
+    public Level updateLevelName(Long id, LevelNameDto levelNameDto) {
+        Level level = findById(id);
+        level.setName(levelNameDto.getName());
+        return levelRepository.save(level);
     }
 
     public List<Level> findAll() {
@@ -29,13 +35,17 @@ public class LevelService {
         return levelRepository.save(level);
     }
 
-    public Level updateLevel(Long id, Level level) {
-        level.setId(id);
-        return levelRepository.save(level);
-    }
-
     public boolean deleteLevel(int id) {
         levelRepository.deleteById(id);
         return true;
+    }
+
+    @Transactional
+    public Level deleteShapesOfLevelId(Long id) {
+        Level level = findById(id);
+        
+        level.clearShapes();
+
+        return levelRepository.save(level);
     }
 }

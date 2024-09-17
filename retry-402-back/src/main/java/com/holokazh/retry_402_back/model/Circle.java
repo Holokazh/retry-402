@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @DiscriminatorValue("Circle")
-public class Circle extends Form {
+public class Circle extends Shape {
 
     @Column(name = "radius", nullable = false)
     public double radius;

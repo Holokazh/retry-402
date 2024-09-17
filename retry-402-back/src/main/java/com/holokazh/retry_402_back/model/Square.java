@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @DiscriminatorValue("Square")
-public class Square extends Form {
+public class Square extends Shape {
 
     @Column(name = "side", nullable = false)
     public double side;

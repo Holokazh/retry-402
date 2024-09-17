@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("Triangle")
-public class Triangle extends Form {
+public class Triangle extends Shape {
 
     @Column(name = "base", nullable = false)
     public double base;

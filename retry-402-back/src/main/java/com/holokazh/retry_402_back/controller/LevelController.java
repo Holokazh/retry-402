@@ -1,6 +1,7 @@
 package com.holokazh.retry_402_back.controller;
 
 import com.holokazh.retry_402_back.model.Level;
+import com.holokazh.retry_402_back.model.dto.LevelNameDto;
 import com.holokazh.retry_402_back.service.LevelService;
 
 import org.springframework.http.HttpStatus;
@@ -41,8 +42,8 @@ public class LevelController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Level> updateLevel(@PathVariable Long id, @RequestBody Level level) {
-        Level updatedLevel = levelService.updateLevel(id, level);
+    public ResponseEntity<Level> updateLevel(@PathVariable Long id, @RequestBody LevelNameDto levelNameDto) {
+        Level updatedLevel = levelService.updateLevelName(id, levelNameDto);
         if (updatedLevel != null) {
             return ResponseEntity.ok(updatedLevel);
         } else {
@@ -55,6 +56,16 @@ public class LevelController {
         boolean deleted = levelService.deleteLevel(id);
         if (deleted) {
             return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/deleteAllShapes/{id}")
+    public ResponseEntity<Level> deleteShapesOfLevel(@PathVariable Long id) {
+        Level levelWithShapesDeleted = levelService.deleteShapesOfLevelId(id);
+        if (levelWithShapesDeleted.getShapes().isEmpty()) {
+            return new ResponseEntity<>(levelWithShapesDeleted, HttpStatus.OK);
         } else {
             return ResponseEntity.notFound().build();
         }

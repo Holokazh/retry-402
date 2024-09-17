@@ -14,9 +14,9 @@ public class Level {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade=CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinColumn(name = "level_id", referencedColumnName = "id", nullable = false)
-    private List<Form> forms;
+    private List<Shape> shapes;
 
     public Level() {
     }
@@ -41,19 +41,23 @@ public class Level {
         this.name = name;
     }
 
-    public void addForm(Form form) {
-        this.forms.add(form);
+    public void addShape(Shape shape) {
+        this.shapes.add(shape);
     }
 
-    public void addForms(List<Form> listForms) {
-        this.forms.addAll(listForms);
+    public void addShapes(List<Shape> listShapes) {
+        this.shapes.addAll(listShapes);
     }
 
-    public void setForms(List<Form> listForms) {
-        this.forms = listForms;
+    public void clearShapes() {
+        this.shapes.clear();
     }
 
-    public List<Form> getForms() {
-        return this.forms;
+    public void setShapes(List<Shape> listShapes) {
+        this.shapes = listShapes;
+    }
+
+    public List<Shape> getShapes() {
+        return this.shapes;
     }
 }

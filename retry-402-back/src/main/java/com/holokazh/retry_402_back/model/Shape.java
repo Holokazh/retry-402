@@ -16,7 +16,7 @@ import jakarta.persistence.*;
         @JsonSubTypes.Type(value = Triangle.class, name = "Triangle"),
         @JsonSubTypes.Type(value = Circle.class, name = "Circle")
 })
-public abstract class Form {
+public abstract class Shape {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +32,10 @@ public abstract class Form {
     @Column(nullable = false)
     private int posY;
 
-    public Form() {
+    public Shape() {
     }
 
-    public Form(int posX, int posY) {
+    public Shape(int posX, int posY) {
         this.color = "#000000";
         this.posX = posX;
         this.posY = posY;
