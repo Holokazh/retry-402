@@ -21,7 +21,7 @@ public class ShapeController {
     }
 
     @GetMapping(value = "{id}")
-    public ResponseEntity<Shape> getFormById(@PathVariable Long id) {
+    public ResponseEntity<Shape> getShapeById(@PathVariable Long id) {
         Shape form = shapeService.findById(id);
         if (form != null) {
             return ResponseEntity.ok(form);
@@ -41,12 +41,12 @@ public class ShapeController {
     }
 
     @PutMapping(value = "{id}")
-    public ResponseEntity<Shape> updateForm(@PathVariable Long id, @RequestBody Shape form) {
+    public ResponseEntity<Shape> updateShape(@PathVariable Long id, @RequestBody Shape form) {
         return ResponseEntity.ok(shapeService.updateShape(id, form));
     }
 
     @DeleteMapping(value = "{id}")
-    public ResponseEntity<Void> deleteForm(@PathVariable int id) {
+    public ResponseEntity<Void> deleteShape(@PathVariable int id) {
         shapeService.deleteShape(id);
         return ResponseEntity.noContent().build();
     }

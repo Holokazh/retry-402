@@ -1,7 +1,7 @@
 package com.holokazh.retry_402_back.controller;
 
 import com.holokazh.retry_402_back.model.Level;
-import com.holokazh.retry_402_back.model.dto.LevelNameDto;
+import com.holokazh.retry_402_back.model.dto.LevelDto;
 import com.holokazh.retry_402_back.service.LevelService;
 
 import org.springframework.http.HttpStatus;
@@ -41,9 +41,9 @@ public class LevelController {
         return new ResponseEntity<>(levelService.addLevel(level), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Level> updateLevel(@PathVariable Long id, @RequestBody LevelNameDto levelNameDto) {
-        Level updatedLevel = levelService.updateLevelName(id, levelNameDto);
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<Level> updateLevel(@PathVariable Long id, @RequestBody LevelDto levelDto) {
+        Level updatedLevel = levelService.updateLevelName(id, levelDto);
         if (updatedLevel != null) {
             return ResponseEntity.ok(updatedLevel);
         } else {

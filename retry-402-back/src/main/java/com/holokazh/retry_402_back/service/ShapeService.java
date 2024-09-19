@@ -2,7 +2,6 @@ package com.holokazh.retry_402_back.service;
 
 import com.holokazh.retry_402_back.model.Shape;
 import com.holokazh.retry_402_back.model.Level;
-import com.holokazh.retry_402_back.repository.LevelRepository;
 import com.holokazh.retry_402_back.repository.ShapeRepository;
 
 import java.util.List;
@@ -14,12 +13,10 @@ public class ShapeService {
 
     private final ShapeRepository shapeRepository;
     private final LevelService levelService;
-    private final LevelRepository levelRepository;
 
-    public ShapeService(ShapeRepository shapeRepository, LevelService levelService, LevelRepository levelRepository) {
+    public ShapeService(ShapeRepository shapeRepository, LevelService levelService) {
         this.shapeRepository = shapeRepository;
         this.levelService = levelService;
-        this.levelRepository = levelRepository;
     }
 
     public Shape findById(Long id) {
