@@ -5,7 +5,7 @@ import { useFetch } from '../../hooks/useFetch';
 
 function EditLevel() {
     const { id } = useParams();
-    const [url, setUrl] = useState(`http://127.0.0.1:8080/api/levels/${id}`);
+    const [ url, setUrl ] = useState(`http://127.0.0.1:8080/api/levels/${id}`);
     const { data, isPending, error } = useFetch(url);
 
     // console.log(data);
